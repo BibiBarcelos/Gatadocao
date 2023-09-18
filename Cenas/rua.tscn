@@ -1,0 +1,128 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkudy15q00b74"]
+
+[ext_resource type="Script" path="res://Códigos/rua.gd" id="1_1wokc"]
+[ext_resource type="Texture2D" uid="uid://ds3kik0g5wxrj" path="res://Assets/RuaTemp.png" id="1_olvxa"]
+[ext_resource type="Script" path="res://Códigos/câmera.gd" id="2_2ehrb"]
+[ext_resource type="Texture2D" uid="uid://cyf4brnxf1pf2" path="res://icon.svg" id="3_vasne"]
+[ext_resource type="PackedScene" uid="uid://cwb650jyljj6h" path="res://Cenas/menu.tscn" id="4_x84e4"]
+
+[node name="rua" type="Node2D"]
+script = ExtResource("1_1wokc")
+
+[node name="FundoTemporário" type="Sprite2D" parent="."]
+position = Vector2(1000, 536)
+texture = ExtResource("1_olvxa")
+
+[node name="Imóveis" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Casa" type="Control" parent="Imóveis"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Porta" type="TextureButton" parent="Imóveis/Casa"]
+layout_mode = 0
+offset_left = 992.0
+offset_top = 696.0
+offset_right = 1128.0
+offset_bottom = 896.0
+
+[node name="Casa 2" type="Control" parent="Imóveis"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Casa 3" type="Control" parent="Imóveis"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Padaria" type="Control" parent="Imóveis"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Vendinha" type="Control" parent="Imóveis"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Terreno baldio" type="Control" parent="Imóveis"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Carro" type="Control" parent="Imóveis"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Interativos" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Coletáveis" type="Control" parent="Interativos"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NPCS" type="Control" parent="Interativos"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Gatos" type="Control" parent="Interativos/NPCS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Humanos" type="Control" parent="Interativos/NPCS"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+limit_left = -1850
+limit_right = 3880
+limit_smoothed = true
+script = ExtResource("2_2ehrb")
+centroOff = Vector2(510, 0)
+
+[node name="GUI" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Contentor" type="HBoxContainer" parent="Camera2D/GUI"]
+layout_mode = 0
+offset_left = 648.0
+offset_top = -520.0
+offset_right = 936.0
+offset_bottom = -392.0
+theme_override_constants/separation = 30
+
+[node name="Album" type="TextureButton" parent="Camera2D/GUI/Contentor"]
+layout_mode = 2
+texture_normal = ExtResource("3_vasne")
+
+[node name="Menu" type="TextureButton" parent="Camera2D/GUI/Contentor"]
+layout_mode = 2
+texture_normal = ExtResource("3_vasne")
+
+[node name="Menu" parent="Camera2D" instance=ExtResource("4_x84e4")]
+visible = false
+offset_left = -960.0
+offset_top = -539.0
+offset_right = -960.0
+offset_bottom = -539.0
+scale = Vector2(48, 27.04)
+
+[connection signal="button_down" from="Imóveis/Casa/Porta" to="." method="_on_porta_button_down"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxrnx4o5kgj4a"]
+
+[ext_resource type="Script" path="res://Códigos/rabisgatos_splash.gd" id="1_61lpf"]
+[ext_resource type="VideoStream" path="res://Rabisgatos.ogv" id="1_jkwka"]
+
+[node name="RabisgatosSplash" type="VideoStreamPlayer"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+stream = ExtResource("1_jkwka")
+autoplay = true
+expand = true
+script = ExtResource("1_61lpf")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Pular" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="button_down" from="Pular" to="." method="_on_pular_button_down"]

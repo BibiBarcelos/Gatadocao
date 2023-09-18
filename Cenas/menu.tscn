@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwb650jyljj6h"]
+
+[ext_resource type="Script" path="res://Códigos/menu.gd" id="1_3yfxv"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3yfxv")
+
+[node name="Tudo" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cor" type="ColorRect" parent="Tudo"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.882353, 0.611765, 0.611765, 0.34902)
+
+[node name="DelimitarMargens" type="MarginContainer" parent="Tudo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="CadernoTextura" type="TextureRect" parent="Tudo/DelimitarMargens"]
+layout_mode = 2
+
+[node name="Geral" type="Control" parent="Tudo/DelimitarMargens"]
+layout_mode = 2
+
+[node name="Adicionais" type="Control" parent="Tudo/DelimitarMargens"]
+layout_mode = 2
+
+[node name="Sair" type="TextureButton" parent="Tudo/DelimitarMargens/Adicionais"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -328.0
+offset_top = -120.0
+offset_right = -80.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Voltar" type="TextureButton" parent="Tudo/DelimitarMargens/Adicionais"]
+layout_mode = 0
+offset_left = 1024.0
+offset_top = 808.0
+offset_right = 1272.0
+offset_bottom = 904.0
+
+[connection signal="button_down" from="Tudo/DelimitarMargens/Adicionais/Sair" to="." method="_on_sair_button_down"]
+[connection signal="button_down" from="Tudo/DelimitarMargens/Adicionais/Voltar" to="." method="_on_voltar_button_down"]
