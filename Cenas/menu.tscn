@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwb650jyljj6h"]
+[gd_scene load_steps=4 format=3 uid="uid://cwb650jyljj6h"]
 
 [ext_resource type="Script" path="res://Códigos/menu.gd" id="1_3yfxv"]
+[ext_resource type="Texture2D" uid="uid://cyf4brnxf1pf2" path="res://icon.svg" id="2_s76mo"]
+[ext_resource type="Texture2D" uid="uid://cbjvktir4iriw" path="res://Ícone.png" id="3_45txm"]
 
 [node name="Menu" type="Control"]
+process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,33 +23,57 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Cor" type="ColorRect" parent="Tudo"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(0.882353, 0.611765, 0.611765, 0.34902)
-
-[node name="DelimitarMargens" type="MarginContainer" parent="Tudo"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 64
-theme_override_constants/margin_right = 64
-theme_override_constants/margin_bottom = 64
+color = Color(0.882353, 0.611765, 0.611765, 0.34902)
 
-[node name="CadernoTextura" type="TextureRect" parent="Tudo/DelimitarMargens"]
+[node name="Botoes" type="VBoxContainer" parent="Tudo"]
 layout_mode = 2
+offset_left = 1088.0
+offset_top = 320.0
+offset_right = 1216.0
+offset_bottom = 512.0
 
-[node name="Geral" type="Control" parent="Tudo/DelimitarMargens"]
+[node name="SemBordas" type="TextureButton" parent="Tudo/Botoes"]
 layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("2_s76mo")
 
-[node name="Adicionais" type="Control" parent="Tudo/DelimitarMargens"]
+[node name="TelaCheia" type="TextureButton" parent="Tudo/Botoes"]
 layout_mode = 2
+texture_normal = ExtResource("2_s76mo")
+ignore_texture_size = true
 
-[node name="Sair" type="TextureButton" parent="Tudo/DelimitarMargens/Adicionais"]
+[node name="Palavras" type="VBoxContainer" parent="Tudo"]
+layout_mode = 2
+offset_left = 1247.0
+offset_top = 320.0
+offset_right = 1375.0
+offset_bottom = 512.0
+scale = Vector2(1, 1.32)
+
+[node name="CadernoTextura" type="TextureRect" parent="Tudo"]
+layout_mode = 2
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 1856.0
+offset_bottom = 1016.0
+metadata/_edit_lock_ = true
+
+[node name="Adicionais" type="Control" parent="Tudo"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 1856.0
+offset_bottom = 1016.0
+metadata/_edit_lock_ = true
+
+[node name="Sair" type="TextureButton" parent="Tudo/Adicionais"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -59,13 +86,22 @@ offset_right = -80.0
 offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 0
+texture_normal = ExtResource("3_45txm")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_lock_ = true
 
-[node name="Voltar" type="TextureButton" parent="Tudo/DelimitarMargens/Adicionais"]
+[node name="Voltar" type="TextureButton" parent="Tudo/Adicionais"]
 layout_mode = 0
 offset_left = 1024.0
 offset_top = 808.0
 offset_right = 1272.0
 offset_bottom = 904.0
+texture_normal = ExtResource("2_s76mo")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_lock_ = true
 
-[connection signal="button_down" from="Tudo/DelimitarMargens/Adicionais/Sair" to="." method="_on_sair_button_down"]
-[connection signal="button_down" from="Tudo/DelimitarMargens/Adicionais/Voltar" to="." method="_on_voltar_button_down"]
+[connection signal="toggled" from="Tudo/Botoes/SemBordas" to="." method="_on_sem_bordas_toggled"]
+[connection signal="button_down" from="Tudo/Adicionais/Sair" to="." method="_on_sair_button_down"]
+[connection signal="button_down" from="Tudo/Adicionais/Voltar" to="." method="_on_voltar_button_down"]

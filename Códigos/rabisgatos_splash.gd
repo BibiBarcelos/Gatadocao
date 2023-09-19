@@ -1,11 +1,10 @@
 extends VideoStreamPlayer
-var casa = preload("res://Cenas/casa.tscn")
+var casa = preload("res://Cenas/casinha.tscn")
 
 
-func _on_timer_timeout():
+func _ready():
+	await get_tree().create_timer(3).timeout
 	get_tree().change_scene_to_packed(casa)
-	pass
-
 
 func _on_pular_button_down():
 	get_tree().change_scene_to_packed(casa)

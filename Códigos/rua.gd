@@ -1,24 +1,18 @@
 extends Node2D
-var casa = preload("res://Cenas/casa.tscn")
-var pausado = false
+#Carregamentos prévios
+var casa = preload("res://Cenas/casinha.tscn")
 @onready var menu = $Camera2D/Menu
 
 
 #Funções de processamento
 func _process(delta):
 	if Input.is_action_just_pressed("pausar"):
-		menuPausa()
+		get_tree().paused = true
+		menu.show()
 
 
 #Ações
-func menuPausa():
-	if pausado:
-		menu.hide()
-		Engine.time_scale = 1
-	else:
-		menu.show()
-		Engine.time_scale = 0
-	pausado = !pausado
+
 
 #Botões
 func _on_porta_button_down():

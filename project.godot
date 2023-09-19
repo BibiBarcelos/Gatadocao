@@ -15,6 +15,10 @@ run/main_scene="res://Cenas/rabisgatos_splash.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://Ícone.png"
 
+[autoload]
+
+VariaveisGlobais="*res://Códigos/variaveisGlobais.gd"
+
 [display]
 
 window/size/viewport_width=1920

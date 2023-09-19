@@ -1,0 +1,129 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8scu8p4giwfe"]
+
+[ext_resource type="Texture2D" uid="uid://b1d6rqmf27xsq" path="res://Assets/CasaTemp.png" id="1_opsxq"]
+[ext_resource type="Script" path="res://Códigos/casa.gd" id="1_qf6pq"]
+[ext_resource type="Script" path="res://Códigos/câmera.gd" id="3_qkih7"]
+[ext_resource type="Texture2D" uid="uid://cyf4brnxf1pf2" path="res://icon.svg" id="4_c26dd"]
+[ext_resource type="PackedScene" uid="uid://cwb650jyljj6h" path="res://Cenas/menu.tscn" id="5_kxiu3"]
+
+[node name="casinha" type="Node2D"]
+script = ExtResource("1_qf6pq")
+
+[node name="CasaTemp" type="Sprite2D" parent="."]
+position = Vector2(958, 540)
+texture = ExtResource("1_opsxq")
+
+[node name="Interativos" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Relevantes" type="Control" parent="Interativos"]
+anchors_preset = 0
+offset_left = 816.0
+offset_top = 64.0
+offset_right = 856.0
+offset_bottom = 104.0
+
+[node name="Porta" type="TextureButton" parent="Interativos/Relevantes"]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 768.0
+
+[node name="Geladeira" type="TextureButton" parent="Interativos/Relevantes"]
+layout_mode = 0
+offset_left = 1040.0
+offset_top = 296.0
+offset_right = 1192.0
+offset_bottom = 528.0
+
+[node name="Quadro de peixe" type="TextureButton" parent="Interativos/Relevantes"]
+layout_mode = 0
+offset_left = -248.0
+offset_top = 288.0
+offset_right = 152.0
+offset_bottom = 472.0
+
+[node name="Carteira" type="TextureButton" parent="Interativos/Relevantes"]
+layout_mode = 0
+offset_left = -384.0
+offset_top = 728.0
+offset_right = -296.0
+offset_bottom = 800.0
+
+[node name="Criado mudo" type="TextureButton" parent="Interativos/Relevantes"]
+layout_mode = 0
+offset_left = 2752.0
+offset_top = 688.0
+offset_right = 2928.0
+offset_bottom = 896.0
+
+[node name="PC" type="TextureButton" parent="Interativos/Relevantes"]
+layout_mode = 0
+offset_left = 2528.0
+offset_top = 1040.0
+offset_right = 3088.0
+offset_bottom = 1112.0
+
+[node name="JanelaSala" type="TextureButton" parent="Interativos/Relevantes"]
+layout_mode = 0
+offset_left = -664.0
+offset_top = 232.0
+offset_right = -360.0
+offset_bottom = 552.0
+
+[node name="Plantinha" type="TextureButton" parent="Interativos/Relevantes"]
+layout_mode = 0
+offset_left = -704.0
+offset_top = 528.0
+offset_right = -608.0
+offset_bottom = 616.0
+texture_normal = ExtResource("4_c26dd")
+
+[node name="Diálogo" type="Control" parent="Interativos"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+limit_left = -1920
+limit_right = 3840
+limit_smoothed = true
+script = ExtResource("3_qkih7")
+centroOff = Vector2(500, 0)
+
+[node name="GUI" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Contentor" type="HBoxContainer" parent="Camera2D/GUI"]
+layout_mode = 0
+offset_left = 648.0
+offset_top = -520.0
+offset_right = 936.0
+offset_bottom = -392.0
+theme_override_constants/separation = 30
+
+[node name="Album" type="TextureButton" parent="Camera2D/GUI/Contentor"]
+layout_mode = 2
+texture_normal = ExtResource("4_c26dd")
+
+[node name="Menu" type="TextureButton" parent="Camera2D/GUI/Contentor"]
+layout_mode = 2
+texture_normal = ExtResource("4_c26dd")
+
+[node name="Menu" parent="Camera2D" instance=ExtResource("5_kxiu3")]
+visible = false
+offset_left = -960.0
+offset_top = -539.0
+offset_right = -960.0
+offset_bottom = -539.0
+
+[connection signal="button_down" from="Interativos/Relevantes/Porta" to="." method="_on_porta_button_down"]
+[connection signal="button_down" from="Interativos/Relevantes/JanelaSala" to="." method="_on_janela_sala_button_down"]
+[connection signal="button_down" from="Interativos/Relevantes/Plantinha" to="." method="_on_plantinha_button_down"]
